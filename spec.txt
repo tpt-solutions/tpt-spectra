@@ -1,0 +1,22 @@
+Design Document: TPT Spectra
+Project Name: TPT Spectra (Open-Source Medical Imaging & Diagnostics)
+Industry: Healthcare & MedTech
+Status: Phase 1 Design / Pre-Alpha
+1. The Name
+"Lumen" sounds like a lightbulb company. Spectra refers to the electromagnetic spectrum. Medical imaging isn't just one thing—it's X-rays (CT), radio waves (MRI), sound waves (Ultrasound), and gamma rays (PET). TPT Spectra covers the entire diagnostic spectrum.
+2. The Mission
+Your tpt-healthcare-nz manages the patient records (FHIR). TPT Spectra manages the actual multi-million-dollar machines. It is an open-source, hyper-fast, GPU-accelerated DICOM reconstruction engine written in Rust that turns raw sensor data into 3D diagnostic models in seconds, not minutes.
+3. Core Components
+Multi-Modal Reconstruction Engine: GPU-accelerated algorithms (using wgpu) for filtered back-projection (CT) and iterative reconstruction (MRI).
+DICOM Native Parser: A zero-allocation Rust parser for the notoriously complex DICOM standard.
+AI Diagnostic Bridge: A plug-and-play ONNX runtime layer so third-party AI models (tumor detection, fracture mapping) can process the 3D voxel data natively.
+4. Integration with TPT Ecosystem
+tpt-healthcare-nz (Patient): Stores the FHIR records and links to the imaging.
+TPT Spectra (Machine): Reconstructs the scan and runs the AI.
+The Link: Spectra pushes the final DICOM images and AI diagnostic confidence scores directly back into the patient's FHIR record in tpt-healthcare-nz.
+Target Tech Stack: TPT Spectra (Medical Imaging)
+Language: Rust (for the core reconstruction engine and DICOM parser).
+GPU Libraries: wgpu or vulkan (for massively parallel image reconstruction).
+DICOM Standard: dicom crate (for zero-allocation parsing of medical headers and pixel data).
+AI Integration: ONNX Runtime (for running third-party diagnostic models like tumor detection directly on the voxel data).
+Verification: FDA 510(k) validation tools, phantom image testing suites, and cross-referencing against the standard DCMTK (C++) library to ensure pixel-perfect parity.
