@@ -1,0 +1,20 @@
+[package]
+name = "spectra-ai-bridge"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "AI diagnostic bridge: ONNX runtime integration, model registry, adapters"
+
+[dependencies]
+spectra-recon-core = { path = "../recon-core" }
+ort = "2.0.0-rc.12"
+ndarray = "0.17"
+thiserror.workspace = true
+tracing.workspace = true
+serde.workspace = true
+
+[dev-dependencies]

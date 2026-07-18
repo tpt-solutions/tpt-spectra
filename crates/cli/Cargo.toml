@@ -1,0 +1,26 @@
+[package]
+name = "spectra-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "TPT Spectra CLI: run parser -> reconstruction -> AI pipeline end-to-end"
+
+[[bin]]
+name = "spectra"
+path = "src/main.rs"
+
+[dependencies]
+spectra-dicom-parser = { path = "../dicom-parser" }
+spectra-recon-core = { path = "../recon-core" }
+spectra-gpu-backend = { path = "../gpu-backend" }
+spectra-ai-bridge = { path = "../ai-bridge" }
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+clap = { version = "4.4", features = ["derive"] }
+
+[dev-dependencies]

@@ -1,0 +1,20 @@
+[package]
+name = "spectra-gpu-backend"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "GPU reconstruction backend (wgpu): device init, pipelines, compute shaders"
+
+[dependencies]
+spectra-recon-core = { path = "../recon-core" }
+wgpu = "0.19"
+bytemuck = { version = "1.14", features = ["derive"] }
+thiserror.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt", "macros"] }
