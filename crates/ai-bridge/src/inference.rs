@@ -74,9 +74,9 @@ impl DiagnosticModel {
             ort::value::Tensor::from_array(tensor).map_err(|e| AiError::Ort(e.to_string()))?;
         let input_name = self
             .session
-            .inputs()
+            .inputs
             .first()
-            .map(|o| o.name().to_string())
+            .map(|o| o.name.clone())
             .ok_or_else(|| AiError::BadOutput("no model inputs".into()))?;
 
         let outputs = self
